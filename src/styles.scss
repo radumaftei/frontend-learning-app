@@ -6,6 +6,14 @@
 
 // add here the custom classes which you don t find with tailwind
 
+body {
+  background-color: #161d31;
+}
+
+.bg-secondary {
+  background-color: #283046;
+}
+
 .selected {
   background-color: #4a5568;
   color: #ffffff;
