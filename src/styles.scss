@@ -5,3 +5,8 @@
 @tailwind utilities;
 
 // add here the custom classes which you don t find with tailwind
+
+.selected {
+  background-color: #4a5568;
+  color: #ffffff;
+}

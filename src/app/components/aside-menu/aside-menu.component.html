@@ -1,1 +1,30 @@
-<p>aside-menu works!</p>
+<aside class="bg-gray-800 text-white p-4 w-[25vw] text-center rounded-e-md">
+  <div
+    class="text-lg font-semibold mb-4 cursor-pointer flex justify-center w-[60%]"
+    (click)="handleAsideMenu()"
+  >
+    <h2>Menu</h2>
+    <span class="ml-[10%] mt-[3%] text-sm flex justify-center align-center">{{ isOpen ? '\u25B2' : '\u25BC' }}</span>
+  </div>
+  <div *ngIf="isOpen">
+    <ul *ngFor="let topic of TOPICSLIST">
+    <!-- @for (topic of TOPICSLIST; track topic.name) {
+        <li
+           class="mb-2 mt-2 p-4"
+      [class.selected]="selectedTopic === 'HTML'"
+      (click)="selectTopic('HTML')"
+    >
+      <a href="#">HTML</a>
+    </li>
+    } -->
+    <li
+      class="mb-2 mt-2 p-4"
+      [class.selected]="selectedTopic === topic.name"
+      (click)="selectTopic(topic.name)"
+    >
+      <a href="#">{{ topic.name }}</a>
+    </li>
+  </ul>
+  </div>
+  
+</aside>
