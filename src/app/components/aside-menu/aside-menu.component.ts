@@ -13,7 +13,7 @@ import { TopicService } from '../../services/topic.service';
 })
 export class AsideMenuComponent implements OnInit {
   protected isOpen: boolean = false;
-  protected selectedTopic: string | null = null;
+  protected selectedTopic?: string;
   protected topicsList?: Topic[];
   @Output() topicName = new EventEmitter<string>();
 
@@ -25,7 +25,7 @@ export class AsideMenuComponent implements OnInit {
 
   toggleAsideMenu() {
     this.isOpen = !this.isOpen;
-    this.selectedTopic = null;
+    this.selectedTopic = '';
     this.sendTopicNameToParentComponent('');
   }
 
