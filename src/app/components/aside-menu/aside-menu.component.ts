@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Topic } from '../../models/topic.model';
 import { TopicService } from '../../services/topic.service';
@@ -15,7 +15,8 @@ import { TopicService } from '../../services/topic.service';
 export class AsideMenuComponent implements OnInit {
   protected isOpen: boolean = false;
   protected selectedTopic: string | null = null;
-  protected topicsList!: Topic[];
+  protected topicsList: Topic[] | undefined;
+  @Output() topicName = new EventEmitter<string>();
 
   constructor(private topicService: TopicService) {}
 
@@ -26,9 +27,11 @@ export class AsideMenuComponent implements OnInit {
   handleAsideMenu() {
     this.isOpen = !this.isOpen;
     this.selectedTopic = null;
+    this.topicName.emit(undefined);
   }
 
   selectTopic(topic: string) {
     this.selectedTopic = topic;
+    this.topicName.emit(topic);
   }
 }

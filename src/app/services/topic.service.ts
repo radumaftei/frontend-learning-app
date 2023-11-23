@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SubTopic } from '../models/subtopic.model';
 import { Topic } from '../models/topic.model';
 
 @Injectable({
@@ -10,28 +11,28 @@ export class TopicService {
       name: 'HTML',
       subtopic: [
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is HTML?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
             'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         },
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is HTML?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
             'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         },
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is HTML?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
             'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
         },
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is HTML?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
@@ -43,7 +44,7 @@ export class TopicService {
       name: 'CSS/SCSS',
       subtopic: [
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is CSS/SCSS?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
@@ -76,7 +77,7 @@ export class TopicService {
       name: 'JAVASCRIPT',
       subtopic: [
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is JAVASCRIPT?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
@@ -109,7 +110,7 @@ export class TopicService {
       name: 'ANGULAR',
       subtopic: [
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is ANGULAR?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
@@ -142,7 +143,7 @@ export class TopicService {
       name: 'REACT',
       subtopic: [
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is REACT?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
@@ -175,7 +176,7 @@ export class TopicService {
       name: 'JAVA',
       subtopic: [
         {
-          title: 'What is Lorem Ipsum?',
+          title: 'What is JAVA?',
           description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
           content:
@@ -210,5 +211,9 @@ export class TopicService {
 
   getListOfTopics(): Topic[] {
     return this.TOPICSLIST;
+  }
+
+  getListOfSubtopicsByName(topic: string): SubTopic[] | undefined {
+    return this.TOPICSLIST.filter((el) => el.name === topic)[0]?.subtopic;
   }
 }

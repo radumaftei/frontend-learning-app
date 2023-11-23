@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { AsideMenuComponent } from './components/aside-menu/aside-menu.component';
+import { HomeComponent } from './components/home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, AsideMenuComponent],
+  imports: [CommonModule, RouterOutlet, HomeComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
