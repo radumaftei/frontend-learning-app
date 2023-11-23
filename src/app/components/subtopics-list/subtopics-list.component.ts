@@ -16,11 +16,20 @@ import { SearchSectionComponent } from './search-section/search-section.componen
 export class SubtopicsListComponent implements OnChanges {
   @Input() topicName: string = '';
   protected subtopics: SubTopic[] | undefined;
+  protected searchedSubtopic: string | undefined;
 
   constructor(private topicService: TopicService) {}
 
   ngOnChanges(): void {
     this.subtopics = this.topicService.getListOfSubtopicsByTopicName(
+      this.topicName
+    );
+  }
+
+  searchSubtopic(event: string) {
+    this.searchedSubtopic = event;
+    this.subtopics = this.topicService.getSubtopicBySearchedValue(
+      this.searchedSubtopic,
       this.topicName
     );
   }
