@@ -9,13 +9,12 @@ import { TopicService } from '../../services/topic.service';
   imports: [CommonModule],
   providers: [TopicService],
   templateUrl: './aside-menu.component.html',
-  styleUrl: './aside-menu.component.scss',
+  styleUrl: './aside-menu.component.scss'
 })
-
 export class AsideMenuComponent implements OnInit {
   protected isOpen: boolean = false;
   protected selectedTopic: string | null = null;
-  protected topicsList: Topic[] | undefined;
+  protected topicsList?: Topic[];
   @Output() topicName = new EventEmitter<string>();
 
   constructor(private topicService: TopicService) {}
@@ -27,7 +26,7 @@ export class AsideMenuComponent implements OnInit {
   toggleAsideMenu() {
     this.isOpen = !this.isOpen;
     this.selectedTopic = null;
-    this.sendTopicNameToParentComponent(undefined);
+    this.sendTopicNameToParentComponent('');
   }
 
   selectTopic(topic: string) {
@@ -35,7 +34,7 @@ export class AsideMenuComponent implements OnInit {
     this.sendTopicNameToParentComponent(topic);
   }
 
-  sendTopicNameToParentComponent(topic: string | undefined) {
+  sendTopicNameToParentComponent(topic: string) {
     this.topicName.emit(topic);
   }
 }

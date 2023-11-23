@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, HomeComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'frontend-learning-app';

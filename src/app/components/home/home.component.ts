@@ -8,7 +8,7 @@ import { SubtopicsListComponent } from '../subtopics-list/subtopics-list.compone
   standalone: true,
   imports: [CommonModule, AsideMenuComponent, SubtopicsListComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   topicName: string = '';

@@ -1,4 +1,4 @@
-import { SubTopic } from "./subtopic.model";
+import { SubTopic } from './subtopic.model';
 
 export interface Topic {
   name: string;

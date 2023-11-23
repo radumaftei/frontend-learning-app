@@ -7,8 +7,8 @@ import { SubTopic } from '../../../models/subtopic.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './subtopic.component.html',
-  styleUrl: './subtopic.component.scss',
+  styleUrl: './subtopic.component.scss'
 })
 export class SubtopicComponent {
-  @Input() subtopicName: SubTopic | undefined;
+  @Input() subtopicName?: SubTopic;
 }
