@@ -213,7 +213,7 @@ export class TopicService {
     return this.TOPICSLIST;
   }
 
-  getListOfSubtopicsByName(topic: string): SubTopic[] | undefined {
+  getListOfSubtopicsByTopicName(topic: string): SubTopic[] | undefined {
     return this.TOPICSLIST.filter((el) => el.name === topic)[0]?.subtopic;
   }
 }

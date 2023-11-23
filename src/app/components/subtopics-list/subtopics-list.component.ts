@@ -14,14 +14,14 @@ import { SearchSectionComponent } from './search-section/search-section.componen
   styleUrl: './subtopics-list.component.scss',
 })
 export class SubtopicsListComponent implements OnChanges {
-  @Input() mainTopicName: string = '';
+  @Input() topicName: string = '';
   protected subtopics: SubTopic[] | undefined;
 
   constructor(private topicService: TopicService) {}
 
   ngOnChanges(): void {
-    this.subtopics = this.topicService.getListOfSubtopicsByName(
-      this.mainTopicName
+    this.subtopics = this.topicService.getListOfSubtopicsByTopicName(
+      this.topicName
     );
   }
 }

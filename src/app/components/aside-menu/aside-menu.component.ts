@@ -24,14 +24,18 @@ export class AsideMenuComponent implements OnInit {
     this.topicsList = this.topicService.getListOfTopics();
   }
 
-  handleAsideMenu() {
+  toggleAsideMenu() {
     this.isOpen = !this.isOpen;
     this.selectedTopic = null;
-    this.topicName.emit(undefined);
+    this.sendTopicNameToParentComponent(undefined);
   }
 
   selectTopic(topic: string) {
     this.selectedTopic = topic;
+    this.sendTopicNameToParentComponent(topic);
+  }
+
+  sendTopicNameToParentComponent(topic: string | undefined) {
     this.topicName.emit(topic);
   }
 }
