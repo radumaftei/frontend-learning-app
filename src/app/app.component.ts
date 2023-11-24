@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { SubtopicModalComponent } from './components/subtopics-list/subtopic-modal/subtopic-modal.component';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HomeComponent],
+  imports: [CommonModule, RouterOutlet, HomeComponent, SubtopicModalComponent],
+  providers: [ModalService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

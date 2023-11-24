@@ -9,7 +9,6 @@ import { SearchSectionComponent } from './search-section/search-section.componen
   selector: 'app-subtopics-list',
   standalone: true,
   imports: [CommonModule, SubtopicComponent, SearchSectionComponent],
-  providers: [TopicService],
   templateUrl: './subtopics-list.component.html',
   styleUrl: './subtopics-list.component.scss'
 })
