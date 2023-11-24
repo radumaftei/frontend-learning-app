@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from '../../services/modal.service';
 
@@ -27,5 +27,10 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   closeModal() {
     this.modal.toggleModal(this.modalID);
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  handleEscapeKey() {
+    this.closeModal();
   }
 }
