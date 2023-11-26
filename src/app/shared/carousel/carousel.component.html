@@ -8,7 +8,7 @@
     [autoplayInterval]="3000"
   >
     <ng-template let-article pTemplate="item">
-      <div class="border-2 rounded-lg text-center">
+      <div class="border-2 rounded-lg text-center cursor-pointer" (click)="navigateToMediumLink(article.link)">
         <p>{{ article.title }}</p>
       </div>
     </ng-template>

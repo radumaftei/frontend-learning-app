@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
 import { ArticlesService } from '../../services/articles.service';
 import { Article, ArticleItems } from '../../models/article.model';
+import { Observable, Subscription, map } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
@@ -11,14 +12,19 @@ import { Article, ArticleItems } from '../../models/article.model';
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss'
 })
-export class CarouselComponent implements OnInit, OnChanges {
+export class CarouselComponent implements OnInit, OnChanges, OnDestroy {
   @Input() topicName: string = '';
   autoplayInterval: number = 3000;
   responsiveOptions: any[] | undefined;
-  articles: ArticleItems[] | [] = [];
+  articles$: Observable<ArticleItems[] | []> = new Observable();
   articlesByTopic: ArticleItems[] | [] = [];
+  private subscription: Subscription = new Subscription();
 
-  constructor(private articlesService: ArticlesService) {}
+  constructor(private articlesService: ArticlesService) {
+    this.articles$ = this.articlesService
+      .getArticles()
+      .pipe(map((el: Article) => el.items.map((article: ArticleItems) => article)));
+  }
 
   ngOnInit() {
     this.responsiveOptions = [
@@ -38,19 +44,25 @@ export class CarouselComponent implements OnInit, OnChanges {
         numScroll: 1
       }
     ];
-
-    this.articlesService
-      .getArticles()
-      .subscribe((el: Article) => (this.articles = el.items.map((article: ArticleItems) => article)));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['topicName'] && !changes['topicName'].firstChange) {
-      this.articlesByTopic = this.articlesService.getListOfArticlesByTopicName(this.topicName, this.articles);
+    if (changes['topicName']) {
+      this.subscription = this.articles$.subscribe((articles: ArticleItems[]) => {
+        this.articlesByTopic = this.articlesService.getListOfArticlesByTopicName(this.topicName, articles);
+      });
     }
   }
 
   isCarouselOpen(): boolean {
     return !!this.articlesByTopic.length;
+  }
+
+  navigateToMediumLink(link: string): void {
+    window.open(link, '_blank');
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
