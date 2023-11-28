@@ -14,8 +14,13 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class HomeComponent {
   topicName: string = '';
+  openedAsideMenu: boolean = false;
 
   getTopicName(event: string) {
     this.topicName = event;
+  }
+
+  getOpenedAsideMenuBoolean(event: boolean) {
+    this.openedAsideMenu = event;
   }
 }
